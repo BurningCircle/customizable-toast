@@ -1,11 +1,23 @@
 {
   "name": "customizable-toast",
   "version": "1.0.0",
-  "description": "custom toast",
+  "description": "This library allows you to create toasts with custom styles. No need in downloading css files to make it work. Just style it, as you want.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BurningCircle/customizable-toast.git"
+  },
+  "keywords": [
+    "toast",
+    "toasts"
+  ],
   "author": "BurningCircle",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BurningCircle/customizable-toast/issues"
+  },
+  "homepage": "https://github.com/BurningCircle/customizable-toast#readme",
 }
