@@ -1,30 +1,26 @@
 "use strict";
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 module.exports = function () {
-  var container = null;
-  var toasts = new Array();
-  var count = 0;
-  var delay = 3000;
-  var type = {
+  let container = null;
+  let toasts = new Array();
+  let count = 0;
+  let delay = 3000;
+  const type = {
     SUCCESS: 'success',
     ERROR: 'error',
     WARNING: 'warning',
     NOTIFICATION: 'notification'
   };
 
-  function _createContainer() {
+  const _createContainer = () => {
     if (!container) {
       container = document.createElement('div');
       document.body.appendChild(container);
       container = _addStylesToContainer(container);
     }
-  }
+  };
 
-  ;
-
-  function _addStylesToContainer(container) {
+  const _addStylesToContainer = container => {
     container.classList.add('toast-container');
     var style = container.currentStyle || window.getComputedStyle(container);
 
@@ -35,19 +31,15 @@ module.exports = function () {
         top: '40px',
         right: '40px'
       };
-
-      for (var _i = 0, _Object$keys = Object.keys(styles); _i < _Object$keys.length; _i++) {
-        var key = _Object$keys[_i];
+      for(let key of Object.keys(styles)){
         container.style[key] = styles[key];
       }
     }
 
     return container;
-  }
+  };
 
-  ;
-
-  function _createNotification(message, type) {
+  const _createNotification = (message, type) => {
     var notif = document.createElement('div');
     var id = Date.now();
     notif.id = id;
@@ -92,11 +84,9 @@ module.exports = function () {
       notif.classList.add('toast-remove');
       notif.style.opacity = 0;
     }, delay);
-  }
+  };
 
-  ;
-
-  function _removeNotification(element) {
+  const _removeNotification = element => {
     try {
       container.removeChild(element.notif);
       toasts.splice(toasts.indexOf(element), 1);
@@ -105,14 +95,12 @@ module.exports = function () {
         document.body.removeChild(container);
         container = null;
       }
-    } catch (err) {}
-  }
+    } catch{
 
-  ;
+    }
+  };
 
-  function _getVarName(variable) {
-    return Object.keys(variable)[0];
-  }
+  const _getVarName = variable => Object.keys(variable)[0];
 
   return {
     success: function success(message) {
@@ -139,12 +127,11 @@ module.exports = function () {
       if (!isNaN(newDelay)) {
         delay = parseInt(newDelay);
       } else {
-        console.table(_defineProperty({
+        console.table({
           library: 'Customizable toast',
-          error: 'Wrong type of delay param'
-        }, _getVarName({
-          delay: delay
-        }), newDelay));
+          error: 'Wrong type of delay param',
+          [_getVarName(delay)]: newDelay
+        });
       }
     }
   };

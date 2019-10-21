@@ -1,9 +1,10 @@
 {
   "name": "customizable-toast",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "This library allows you to create toasts with custom styles. No need in downloading css files to make it work. Just style it, as you want.",
   "main": "index.js",
   "scripts": {
+    "prepublish": "node_modules/babel-cli/bin/babel.js src/js/lib --out-dir lib",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,5 +20,26 @@
   "bugs": {
     "url": "https://github.com/BurningCircle/customizable-toast/issues"
   },
-  "homepage": "https://github.com/BurningCircle/customizable-toast#readme"
+  "homepage": "https://github.com/BurningCircle/customizable-toast#readme",
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-es2015": "^7.0.0-beta.53",
+    "babelify": "^10.0.0",
+    "browser-sync": "^2.26.7",
+    "customizable-toast": "^1.1.0",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-imagemin": "^6.1.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.2",
+    "node-sass": "^4.12.0",
+    "toastr": "^2.1.4"
+  },
+  "dependencies": {}
 }

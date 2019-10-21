@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,500,600,700&display=swap");
+
+$bgColor: rgb(219, 255, 155);
+$mainColor: rgb(253, 52, 164);
+$secondColor: rgb(57, 23, 84);
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  background: $bgColor;
+  font-family: "IBM Plex Mono", monospace;
+  perspective: 1000px;
+  overflow: hidden;
+
+  h1 {
+    width: 100%;
+    text-align: center;
+    color: $mainColor;
+  }
+  button {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "IBM Plex Mono", monospace;
+    padding: 10px;
+    background: $secondColor;
+    font-size: 24pt;
+    outline: none;
+    border: none;
+    box-shadow: 2px 2px 20px 2px rgba(0, 0, 0, 0);
+    transition: 0.3s;
+    transform-style: preserve-3d;
+    color: $bgColor;
+    cursor: pointer;
+    &:hover {
+      box-shadow: 5px 5px 20px 2px rgba(0, 0, 0, 0.4);
+      transform: translate(-50%, -60%) translateZ(10px);
+    }
+  }
+  .button-active {
+    transition: 0.1s;
+    &:hover {
+      box-shadow: 2px 2px 20px 2px rgba(0, 0, 0, 0.4);
+      transform: translate(-50%, -50%) translateZ(0);
+    }
+  }
+}
+
+.toast {
+  padding: 10px;
+  font-family: monospace;
+  font-weight: 600;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  transition: 0.3s;
+  overflow: hidden;
+  box-shadow: 0 5px 20px 2px rgba(0, 0, 0, 0.15);
+}
+
+.toast-success {
+  background: $mainColor;
+  color: white;
+  animation: fallUp 1s cubic-bezier(0.075, 0.82, 0.065, .5);
+  font-size: 18pt;
+}
+
+.toast-remove {
+  transform: scale(0);
+}
+
+@keyframes fallUp {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-20px);
+    opacity: 1;
+  }
+  100%{
+      transform: translateY(0);
+  }
+}
