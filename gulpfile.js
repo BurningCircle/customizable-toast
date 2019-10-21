@@ -6,6 +6,7 @@ const cleanCss = require('gulp-clean-css');
 const rename = require('gulp-rename');
 const browserify = require('gulp-browserify');
 const babelify = require('babelify');
+const babel = require('gulp-babel');
 const uglify = require('gulp-uglify');
 const imagemin = require('gulp-imagemin');
 const del = require('del');
@@ -30,7 +31,7 @@ function css() {
 
 function js() {
     return src('src/js/index.js')
-        .pipe(browserify({ transform: [babelify.configure({ presets: ['@babel/preset-env'] })] }))
+        .pipe(browserify({ transform: [babelify.configure({ presets: ['@babel/env'] })] }))
         .pipe(rename('main.bundle.js'))
         .pipe(uglify())
         .pipe(dest('build'))
@@ -62,12 +63,14 @@ function build() {
     return series(clean, parallel(js, css), images, html);
 }
 
-function prepublish(){
-    return src('src/js/lib/*.js')
-    .pipe(browserify({ transform: [babelify.configure({ presets: ['@babel/preset-env'] })] }))
-    .pipe(rename('main.bundle.js'))
-    .pipe(uglify())
-    .pipe(dest('lib'))
+function prepublish() {
+    del(['./lib/*']);
+    return src('src/js/lib/toast.js')
+        .pipe(babel({
+            presets: ['@babel/env']
+        }))
+        .pipe(rename('index.js'))
+        .pipe(dest('lib'))
 }
 
 exports.build = build();

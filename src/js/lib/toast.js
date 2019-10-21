@@ -1,9 +1,6 @@
-"use strict";
-
-module.exports = function () {
+const toast = (function () {
   let container = null;
   let toasts = new Array();
-  let count = 0;
   let delay = 3000;
   const type = {
     SUCCESS: 'success',
@@ -31,7 +28,7 @@ module.exports = function () {
         top: '40px',
         right: '40px'
       };
-      for(let key of Object.keys(styles)){
+      for (let key of Object.keys(styles)) {
         container.style[key] = styles[key];
       }
     }
@@ -135,4 +132,6 @@ module.exports = function () {
       }
     }
   };
-}();
+}());
+
+export default toast;
